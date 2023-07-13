@@ -1,13 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: SO
+  name: myser
 spec:
   selector:
-    app: serviceobjrct
+    app: mongodb
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 8080
-    nodePort: 30000
+    port: 27017
+    targetPort: 27017
   type: NodePort
