@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: myser
+  name: mongo
 spec:
   selector:
     app: mongodb
@@ -9,4 +9,6 @@ spec:
   - protocol: TCP
     port: 27017
     targetPort: 27017
+    nodePort: 30001
   type: NodePort
+
