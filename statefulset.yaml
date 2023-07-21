@@ -3,8 +3,8 @@ kind: StatefulSet
 metadata:
   name: mongo
 spec:
-  serviceName: "mongo"
   replicas: 3
+  serviceName: "mongo"
   selector:
     matchLabels:
       app: mongo
@@ -20,13 +20,8 @@ spec:
             - containerPort: 27017
           volumeMounts:
             - name: mongo-data
-              mountPath: /data/db
-  volumeClaimTemplates:
-    - metadata:
-        name: mongo-data
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "manual"
-        resources:
-          requests:
-            storage: 1Gi
+              mountPath: /data
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-data-pvc
